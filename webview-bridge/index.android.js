@@ -52,6 +52,13 @@ var WebViewBridge = React.createClass({
     ...WebView.propTypes,
 
     /**
+    * Boolean that sets whether JavaScript running in the context of a file
+    * scheme URL should be allowed to access content from any origin.
+    * Including accessing content from other file scheme URLs
+    */
+    allowUniversalAccessFromFileURLs: PropTypes.bool,
+
+    /**
      * Will be called once the message is being sent from webview
      */
     onBridgeMessage: PropTypes.func,
@@ -118,6 +125,7 @@ var WebViewBridge = React.createClass({
         ref={RCT_WEBVIEWBRIDGE_REF}
         key="webViewKey"
         {...props}
+        allowUniversalAccessFromFileURLs={this.props.allowUniversalAccessFromFileURLs}
         source={resolveAssetSource(source)}
         style={webViewStyles}
         onLoadingStart={this.onLoadingStart}

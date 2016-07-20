@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.views.webview.ReactWebViewManager;
 import com.facebook.react.views.webview.WebViewConfig;
+import com.facebook.react.uimanager.annotations.ReactProp;
 
 import java.util.Map;
 
@@ -59,6 +60,11 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         //do nothing!!!!
     }
   }
+
+    @ReactProp(name = "allowUniversalAccessFromFileURLs")
+    public void setAllowUniversalAccessFromFileURLs(WebView view, boolean allow) {
+        view.getSettings().setAllowUniversalAccessFromFileURLs(allow);
+    }
 
   private void sendToBridge(WebView root, String message) {
     //root.loadUrl("javascript:(function() {\n" + script + ";\n})();");
