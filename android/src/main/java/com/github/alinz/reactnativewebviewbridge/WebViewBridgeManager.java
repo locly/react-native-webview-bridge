@@ -74,11 +74,8 @@ public class WebViewBridgeManager extends ReactWebViewManager {
 
   private void injectBridgeScript(WebView root) {
     //this code needs to be called once per context
-    if (!initializedBridge) {
-      root.addJavascriptInterface(new JavascriptBridge((ReactContext) root.getContext()), "WebViewBridgeAndroid");
-      initializedBridge = true;
-      root.reload();
-    }
+    root.addJavascriptInterface(new JavascriptBridge((ReactContext) root.getContext()), "WebViewBridgeAndroid");
+    root.reload();
 
     // this code needs to be executed everytime a url changes.
     WebViewBridgeManager.evaluateJavascript(root, ""
